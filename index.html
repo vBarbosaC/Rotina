@@ -45,6 +45,22 @@ const ME=[[],['Alimentar e cuidar dos animais','Refeições e higiene','Uma prio
 const hm=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
 const key=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 let S={u:null,W:{},X:{},done:new Set(),mode:0,owner:null,ro:false,w:0,msg:''},tab='agora',vd=new Date().getDay(),day=key(new Date());
+const VAPID='BBhtJUFw_tolB0QaRel3f4z8WFhEZU6n3VjDXjfmXScRKnVlAwVDfSeTIb6Aa_EsX2JP0QFhgNNYFIrTmGo6I7A';
+const u8=s=>{const p='='.repeat((4-s.length%4)%4),r=atob((s+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(r,c=>c.charCodeAt(0))};
+async function avisos(){
+try{
+if(!('PushManager' in window)){S.msg='Para ativar os avisos, instale o app pela Tela de Início e abra pelo ícone.';R();return}
+const p=await Notification.requestPermission();
+if(p!=='granted'){S.msg='Permissão de notificações não concedida.';R();return}
+const reg=await navigator.serviceWorker.ready;
+let sub=await reg.pushManager.getSubscription();
+if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(VAPID)});
+const j=sub.toJSON();
+const r=await sb.from('push_subs').upsert({user_id:S.u,endpoint:j.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth},{onConflict:'endpoint'});
+if(r.error)throw r.error;
+S.msg='Avisos ativados neste aparelho ✓';
+}catch(e){S.msg='Não foi possível ativar os avisos.'}
+R()}
 async function init(){
 const r=await sb.auth.getSession();
 if(!r.data.session){S.u=null;R();return}
@@ -109,6 +125,7 @@ h+='</div>';
 if(!S.ro)h+='<div class="card"><b>Como está o dia?</b><div class="row" style="margin-top:10px">'+MD.map((n,i)=>'<button class="g'+(i==mo?' on':'')+'" onclick="sm('+i+')">'+n+'</button>').join('')+'</div></div>';
 h+='<div class="card"><b>Atrasou? Protocolo anti-atraso</b><ul><li>Olhe o relógio: qual bloco é AGORA?</li><li>Escolha a próxima ação de 5 minutos</li><li>Não dobre tarefas para compensar atrasos</li><li>Registre a vitória possível e siga</li></ul></div>';
 h+='<div class="card"><b>Regras inegociáveis</b><ul><li>Gatos e Rock: comida ao acordar e antes de dormir</li><li>Sachê dos gatos às 19h30</li><li>Passeios do Rock de manhã e à noite</li><li>Lixo na rua até 17h30 (seg, qua, sex)</li><li>Terapia online: quarta, 20h</li><li>Reunião das atendentes: quinta, 9h</li></ul></div>';
+if(!S.ro)h+='<div class="card"><b>Avisos</b><div class="mu" style="margin:6px 0 10px">Receba uma notificação no início de cada bloco. Funciona só com o app instalado na Tela de Início.</div><button onclick="avisos()">Ativar avisos neste aparelho</button></div>';
 h+='<button class="g" onclick="out()">Sair da conta</button>';
 }
 app.innerHTML=h;
