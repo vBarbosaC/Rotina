@@ -3,50 +3,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Guardiã">
-<meta name="theme-color" content="#7c5cbf">
+<meta name="theme-color" content="#1b4fa0">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
-<title>A Guardiã da Rotina</title>
+<title>Guardiã da Rotina</title>
 <style>
-:root{--bg:#faf8ff;--card:#fff;--tx:#2a2540;--mu:#6e6985;--ac:#7c5cbf;--bd:#e4def2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17141f;--card:#221e2e;--tx:#ece9f6;--mu:#9d97b5;--ac:#a58cf0;--bd:#352f47}}
-:root[data-theme="dark"]{--bg:#17141f;--card:#221e2e;--tx:#ece9f6;--mu:#9d97b5;--ac:#a58cf0;--bd:#352f47}
+:root{--bg:#e9f1fb;--card:#fff;--tx:#0f2547;--mu:#4d6280;--ac:#1f5fbf;--on:#fff;--bd:#b9cde6;--hb:#1b4fa0;--pk:#d9447f;--pu:#7b3fb8;--yl:#f2c230;--gr:#2fa84f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1a30;--card:#12274a;--tx:#eaf1ff;--mu:#9db4d6;--ac:#5aa0ff;--on:#04152e;--bd:#24406c;--hb:#153a75;--gr:#4cc36b}}
+:root[data-theme="dark"]{--bg:#0c1a30;--card:#12274a;--tx:#eaf1ff;--mu:#9db4d6;--ac:#5aa0ff;--on:#04152e;--bd:#24406c;--hb:#153a75;--gr:#4cc36b}
 *{box-sizing:border-box}
-body{margin:0 auto;background:var(--bg);color:var(--tx);font:16px/1.4 -apple-system,system-ui,"Segoe UI",sans-serif;max-width:560px;padding:14px 14px 90px}
-h1{font-size:20px;margin:6px 0}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin:12px 0}
+body{margin:0 auto;background:var(--bg);color:var(--tx);font:16px/1.45 -apple-system,system-ui,"Segoe UI",Roboto,sans-serif;max-width:560px;padding:0 14px 96px}
+.hd{display:flex;align-items:center;gap:12px;background:var(--hb);color:#fff;border-radius:0 0 18px 18px;padding:12px 16px;margin:0 -14px 8px;border-bottom:4px solid var(--yl)}
+.tt{font-family:"Trebuchet MS","Arial Rounded MT Bold",system-ui,sans-serif;font-weight:800;font-size:19px;letter-spacing:1px;line-height:1.1}
+.ts{font-size:12px;opacity:.85}
+.card{background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:14px;margin:12px 0}
 .mu{color:var(--mu);font-size:14px}
-.big{font-size:22px;font-weight:600;margin:6px 0 14px}
-button{font:inherit;border:0;border-radius:12px;padding:12px 16px;background:var(--ac);color:#fff;cursor:pointer}
-button.g{background:transparent;color:var(--ac);border:1px solid var(--bd)}
-button.g.on{background:var(--ac);color:#fff}
+.lb{font-size:12px;font-weight:700;letter-spacing:.8px;color:var(--pu);text-transform:uppercase}
+.big{font-size:21px;font-weight:700;margin:6px 0 12px;line-height:1.25}
+button{font:inherit;font-weight:700;border:0;border-radius:10px;padding:12px 16px;background:var(--ac);color:var(--on);cursor:pointer}
+button.g{background:transparent;color:var(--ac);border:2px solid var(--bd)}
+button.g.on{background:var(--pu);border-color:var(--pu);color:#fff}
+button.y{background:var(--yl);color:#3a2c00}
+button.p{background:var(--pk);color:#fff}
 .row{display:flex;gap:8px;flex-wrap:wrap}
-label.it,div.it{display:flex;gap:10px;align-items:flex-start;padding:9px 6px;border-bottom:1px solid var(--bd)}
+label.it,div.it{display:flex;gap:10px;align-items:flex-start;padding:10px 4px;border-bottom:1px solid var(--bd)}
+.it:last-child{border-bottom:0}
 .it input{width:22px;height:22px;accent-color:var(--ac);flex:none}
-.it.cur{background:color-mix(in srgb,var(--ac) 14%,transparent);border-radius:8px}
-.it.d span{text-decoration:line-through;color:var(--mu)}
-.tm{color:var(--mu);font-size:13px;display:block}
-nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav button{flex:1;background:none;color:var(--mu);border-radius:0;padding:14px 4px;font-size:14px}
-nav button.on{color:var(--ac);font-weight:600}
-select,input.tx{font:inherit;padding:10px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);width:100%;margin:6px 0}
+.it.cur{background:color-mix(in srgb,var(--yl) 28%,transparent);border-radius:8px}
+.it.d>span{color:var(--mu)}
+.tm{color:var(--mu);font-size:13px;display:block;font-variant-numeric:tabular-nums}
+.st{margin-left:auto;align-self:center;flex:none;border:2px solid var(--gr);color:var(--gr);border-radius:6px;padding:0 6px;font-size:11px;font-weight:800;transform:rotate(-6deg)}
+.sg{display:flex;gap:3px;background:var(--bd);padding:4px;border-radius:8px}
+.sg i{flex:1;height:14px;border-radius:3px;background:var(--bg)}
+.sg i.f{background:var(--gr)}
+.sg i.y{background:var(--yl)}
+.wb{height:22px;border-radius:11px;background:var(--bd);overflow:hidden}
+.wb b{display:block;height:100%;background:var(--ac)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:3px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;background:none;color:var(--mu);border-radius:0;padding:14px 2px;font-size:13px;font-weight:600;border-top:3px solid transparent;margin-top:-3px}
+nav button.on{color:var(--ac);border-top-color:var(--pk)}
+select,input.tx{font:inherit;padding:11px;border-radius:10px;border:2px solid var(--bd);background:var(--card);color:var(--tx);width:100%;margin:6px 0}
 select{width:auto}
 ul{padding-left:20px;margin:6px 0}
+.fl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 </style></head><body>
-<h1>🐾 A Guardiã da Rotina</h1>
+<div class="hd"><svg width="46" height="46" viewBox="0 0 44 44" aria-hidden="true"><line x1="22" y1="12" x2="22" y2="6" stroke="#0f2547" stroke-width="2.5"/><circle cx="22" cy="5" r="3.2" fill="#d9447f" stroke="#0f2547" stroke-width="2"/><rect x="7" y="12" width="30" height="25" rx="9" fill="#f2c230" stroke="#0f2547" stroke-width="2.5"/><circle cx="16.5" cy="23" r="4.3" fill="#fff" stroke="#0f2547" stroke-width="2"/><circle cx="27.5" cy="23" r="4.3" fill="#fff" stroke="#0f2547" stroke-width="2"/><circle cx="17" cy="23.5" r="1.7" fill="#0f2547"/><circle cx="28" cy="23.5" r="1.7" fill="#0f2547"/><path d="M16 31h12" stroke="#0f2547" stroke-width="2.5" stroke-linecap="round"/></svg><div><div class="tt">GUARDIÃ DA ROTINA</div><div class="ts">Um bloco de cada vez</div></div></div>
 <div id="app"></div>
 <nav id="nav"></nav>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 const sb=supabase.createClient('https://bxcphgstvmzrktxvvpin.supabase.co','sb_publishable_ciIQaI4Iu_ZEZT74RNJEmg_sNpgWO83');
+const VAPID='BBhtJUFw_tolB0QaRel3f4z8WFhEZU6n3VjDXjfmXScRKnVlAwVDfSeTIb6Aa_EsX2JP0QFhgNNYFIrTmGo6I7A';
 const DN=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
 const MD=['Normal','Reduzido','Mínimo'];
 const ME=[[],['Alimentar e cuidar dos animais','Refeições e higiene','Uma prioridade profissional','5–10 min de organização','Preparar o amanhã'],['Comida e água dos animais e necessidades do Rock','Comer, beber água e higiene','Comunicar ou reorganizar o urgente','Descansar']];
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const $=id=>document.getElementById(id);
 const hm=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
 const key=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-let S={u:null,W:{},X:{},done:new Set(),mode:0,owner:null,ro:false,w:0,msg:''},tab='agora',vd=new Date().getDay(),day=key(new Date());
-const VAPID='BBhtJUFw_tolB0QaRel3f4z8WFhEZU6n3VjDXjfmXScRKnVlAwVDfSeTIb6Aa_EsX2JP0QFhgNNYFIrTmGo6I7A';
 const u8=s=>{const p='='.repeat((4-s.length%4)%4),r=atob((s+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(r,c=>c.charCodeAt(0))};
+let S={u:null,W:{},X:{},done:new Set(),mode:0,owner:null,ro:false,w:0,msg:'',pf:{},ml:0},tab='agora',vd=new Date().getDay(),day=key(new Date());
+const goal=()=>S.pf.weight_kg?Math.round(Number(S.pf.weight_kg)*35/50)*50:null;
+async function init(){
+const r=await sb.auth.getSession();
+if(!r.data.session){S.u=null;R();return}
+S.u=r.data.session.user.id;
+try{
+const q=await Promise.all([sb.from('blocks').select('*').order('start_min'),sb.from('checklist_items').select('*').order('sort'),sb.from('viewers').select('owner_id').eq('viewer_id',S.u),sb.from('viewers').select('viewer_id').eq('owner_id',S.u)]);
+if(q[0].error)throw q[0].error;
+S.W={};S.X={};
+q[0].data.forEach(x=>(S.W[x.dow]=S.W[x.dow]||[]).push({id:x.id,s:x.start_min,e:x.end_min,a:hm(x.start_min),b:hm(x.end_min),t:x.title}));
+q[1].data.forEach(x=>(S.X[x.dow]=S.X[x.dow]||[]).push({id:x.id,t:x.title}));
+S.owner=(q[2].data&&q[2].data[0]&&q[2].data[0].owner_id)||S.u;S.ro=S.owner!==S.u;S.w=(q[3].data||[]).length;
+await lp();S.msg='';
+}catch(e){S.msg='Não foi possível carregar. Verifique a internet.'}
+if(S.ro&&(tab=='agua'))tab='agora';
+R()}
+async function lp(){
+day=key(new Date());
+const q=await Promise.all([sb.from('progress').select('item').eq('day',day).eq('user_id',S.owner),sb.from('day_mode').select('mode').eq('day',day).eq('user_id',S.owner)]);
+S.done=new Set((q[0].data||[]).map(x=>x.item));S.mode=(q[1].data&&q[1].data[0]&&q[1].data[0].mode)||0;
+if(!S.ro){try{
+const p=await Promise.all([sb.from('profiles').select('*').eq('user_id',S.u).maybeSingle(),sb.from('water_log').select('ml').eq('user_id',S.u).eq('day',day).maybeSingle()]);
+S.pf=p[0].data||{};S.ml=p[1].data?p[1].data.ml:0}catch(e){}}}
+async function login(ev){
+ev.preventDefault();const f=ev.target;S.msg='Entrando…';R();
+const r=await sb.auth.signInWithPassword({email:f.em.value.trim(),password:f.pw.value});
+if(r.error){S.msg='E-mail ou senha incorretos.';R();return}
+S.msg='';init()}
+async function out(){await sb.auth.signOut();S.u=null;R()}
+async function tg(it){
+if(S.ro)return;
+if(S.done.has(it)){S.done.delete(it);R();await sb.from('progress').delete().eq('user_id',S.u).eq('day',day).eq('item',it)}
+else{S.done.add(it);R();await sb.from('progress').insert({user_id:S.u,day:day,item:it})}}
+async function sm(n){if(S.ro)return;S.mode=n;R();await sb.from('day_mode').upsert({user_id:S.u,day:day,mode:n},{onConflict:'user_id,day'})}
+async function aw(n){S.ml=Math.max(0,Math.min(10000,S.ml+n));R();await sb.from('water_log').upsert({user_id:S.u,day:day,ml:S.ml},{onConflict:'user_id,day'})}
+function pfRow(o){return Object.assign({user_id:S.u,name:S.pf.name||null,weight_kg:S.pf.weight_kg||null,height_cm:S.pf.height_cm||null,water_reminders:S.pf.water_reminders!==false},o||{})}
+async function savePf(){
+const n=$('pn').value.trim(),a=$('pw').value.trim().replace(',','.'),b=$('ph').value.trim().replace(',','.');
+const w=a?parseFloat(a):null,hh=b?parseFloat(b):null;
+if((w!==null&&!(w>=30&&w<=300))||(hh!==null&&!(hh>=100&&hh<=250))){S.msg='Confira os valores: peso entre 30 e 300 kg e altura entre 100 e 250 cm.';R();return}
+const row=pfRow({name:n||null,weight_kg:w,height_cm:hh});
+const r=await sb.from('profiles').upsert(row,{onConflict:'user_id'});
+if(r.error){S.msg='Não foi possível salvar o perfil.';R();return}
+S.pf=row;S.msg='Perfil salvo ✓';R()}
+async function twr(){const v=S.pf.water_reminders===false;S.pf.water_reminders=v;R();await sb.from('profiles').upsert(pfRow({water_reminders:v}),{onConflict:'user_id'})}
 async function avisos(){
 try{
 if(!('PushManager' in window)){S.msg='Para ativar os avisos, instale o app pela Tela de Início e abra pelo ícone.';R();return}
@@ -61,77 +122,63 @@ if(r.error)throw r.error;
 S.msg='Avisos ativados neste aparelho ✓';
 }catch(e){S.msg='Não foi possível ativar os avisos.'}
 R()}
-async function init(){
-const r=await sb.auth.getSession();
-if(!r.data.session){S.u=null;R();return}
-S.u=r.data.session.user.id;
-try{
-const q=await Promise.all([sb.from('blocks').select('*').order('start_min'),sb.from('checklist_items').select('*').order('sort'),sb.from('viewers').select('owner_id').eq('viewer_id',S.u),sb.from('viewers').select('viewer_id').eq('owner_id',S.u)]);
-if(q[0].error)throw q[0].error;
-S.W={};S.X={};
-q[0].data.forEach(x=>(S.W[x.dow]=S.W[x.dow]||[]).push({id:x.id,s:x.start_min,e:x.end_min,a:hm(x.start_min),b:hm(x.end_min),t:x.title}));
-q[1].data.forEach(x=>(S.X[x.dow]=S.X[x.dow]||[]).push({id:x.id,t:x.title}));
-S.owner=(q[2].data&&q[2].data[0]&&q[2].data[0].owner_id)||S.u;S.ro=S.owner!==S.u;S.w=(q[3].data||[]).length;
-await lp();S.msg='';
-}catch(e){S.msg='Não foi possível carregar. Verifique a internet.'}
-R()}
-async function lp(){
-day=key(new Date());
-const q=await Promise.all([sb.from('progress').select('item').eq('day',day).eq('user_id',S.owner),sb.from('day_mode').select('mode').eq('day',day).eq('user_id',S.owner)]);
-S.done=new Set((q[0].data||[]).map(x=>x.item));S.mode=(q[1].data&&q[1].data[0]&&q[1].data[0].mode)||0}
-async function login(ev){
-ev.preventDefault();const f=ev.target;S.msg='Entrando…';R();
-const r=await sb.auth.signInWithPassword({email:f.em.value.trim(),password:f.pw.value});
-if(r.error){S.msg='E-mail ou senha incorretos.';R();return}
-S.msg='';init()}
-async function out(){await sb.auth.signOut();S.u=null;R()}
-async function tg(it){
-if(S.ro)return;
-if(S.done.has(it)){S.done.delete(it);R();await sb.from('progress').delete().eq('user_id',S.u).eq('day',day).eq('item',it)}
-else{S.done.add(it);R();await sb.from('progress').insert({user_id:S.u,day:day,item:it})}}
-async function sm(n){if(S.ro)return;S.mode=n;R();await sb.from('day_mode').upsert({user_id:S.u,day:day,mode:n},{onConflict:'user_id,day'})}
-const st=t=>{tab=t;R()};
+const st=t=>{tab=t;S.msg='';R()};
 const sd=v=>{vd=+v;R()};
+const seg=(n,d)=>{let s='<div class="sg">';for(let i=0;i<n;i++)s+='<i class="'+(i<d?'f':i==d?'y':'')+'"></i>';return s+'</div>'};
 function R(){
-const app=document.getElementById('app'),nav=document.getElementById('nav');
+const app=$('app'),nav=$('nav');
 if(!S.u){
 nav.innerHTML='';
 app.innerHTML='<div class="card"><div class="big">Entrar</div><form onsubmit="login(event)"><input class="tx" name="em" type="email" placeholder="E-mail" autocomplete="username" required><input class="tx" name="pw" type="password" placeholder="Senha" autocomplete="current-password" required><button style="width:100%;margin-top:8px">Entrar</button></form><div class="mu" style="margin-top:10px">'+S.msg+'</div></div>';
 return}
 const now=new Date(),td=now.getDay(),nm=now.getHours()*60+now.getMinutes(),mo=S.mode,bl=S.W[td]||[],xl=S.X[td]||[];
 const cur=bl.findIndex(b=>nm>=b.s&&nm<b.e),nx=bl.findIndex(b=>b.s>nm);
-const dn=bl.filter(b=>S.done.has('b'+b.id)).length;
+const dn=bl.filter(b=>S.done.has('b'+b.id)).length,pc=bl.length?Math.round(dn*100/bl.length):0;
 let h='';
 if(S.msg)h+='<div class="card">'+S.msg+'</div>';
 if(S.ro)h+='<div class="mu">Você está acompanhando a rotina (somente leitura).</div>';
 else if(S.w)h+='<div class="mu">Esta rotina é acompanhada por '+S.w+(S.w>1?' pessoas':' pessoa')+'.</div>';
 if(tab=='agora'){
-if(mo)h+='<div class="card"><b>Modo '+MD[mo].toLowerCase()+'</b><ul>'+ME[mo].map(x=>'<li>'+x+'</li>').join('')+'</ul><div class="mu">Hoje basta isto. Um dia difícil não apaga os anteriores.</div></div>';
-if(cur>=0){const b=bl[cur],d=S.done.has('b'+b.id);h+='<div class="card"><div class="mu">AGORA · '+b.a+'–'+b.b+'</div><div class="big">'+b.t+'</div>'+(S.ro?'':'<button onclick="tg(\'b'+b.id+'\')">'+(d?'Desfazer':'Feito ✓')+'</button>')+(S.ro&&d?'<div>✓ Feito</div>':'')+'</div>'}
+if(!S.ro)h+='<div class="big" style="margin:10px 0 0">'+(now.getHours()<12?'Bom dia':now.getHours()<18?'Boa tarde':'Boa noite')+(S.pf.name?', '+esc(S.pf.name):'')+'</div>';
+h+='<div class="card"><div class="lb">Progresso do dia</div><div style="margin:10px 0 8px">'+seg(bl.length,dn)+'</div><div class="mu">'+DN[td]+' · '+dn+' de '+bl.length+' blocos · '+pc+'%</div></div>';
+if(!S.ro)h+='<div class="row">'+MD.map((n,i)=>'<button class="g'+(i==mo?' on':'')+'" onclick="sm('+i+')">'+n+'</button>').join('')+'</div>';
+if(mo)h+='<div class="card"><div class="lb">Modo '+MD[mo].toLowerCase()+'</div><ul>'+ME[mo].map(x=>'<li>'+x+'</li>').join('')+'</ul><div class="mu">Hoje basta isto. Um dia difícil não apaga os anteriores.</div></div>';
+if(cur>=0){const b=bl[cur],d=S.done.has('b'+b.id);h+='<div class="card"><div class="lb">Bloco atual · '+b.a+'–'+b.b+'</div><div class="big">'+b.t+'</div>'+(S.ro?(d?'<span class="st" style="margin:0">FEITO</span>':''):'<button onclick="tg(\'b'+b.id+'\')">'+(d?'Desfazer':'Feito ✓')+'</button>')+'</div>'}
 else h+='<div class="card"><div class="big">'+(nx>=0?'Intervalo. Respire.':'Dia encerrado. Bom descanso.')+'</div></div>';
-if(nx>=0)h+='<div class="card"><div class="mu">EM SEGUIDA · '+bl[nx].a+'</div><div>'+bl[nx].t+'</div></div>';
-h+='<div class="mu">'+DN[td]+' · '+dn+' de '+bl.length+' blocos feitos</div>';
+if(nx>=0)h+='<div class="card"><div class="lb">Em seguida · '+bl[nx].a+'</div><div>'+bl[nx].t+'</div></div>';
 }else if(tab=='dia'){
 const v=vd==td;
-h+='<div class="row"><select onchange="sd(this.value)">'+DN.map((n,i)=>'<option value="'+i+'"'+(i==vd?' selected':'')+'>'+n+(i==td?' (hoje)':'')+'</option>').join('')+'</select></div><div class="card">';
-(S.W[vd]||[]).forEach((b,i)=>{const c=v&&i==cur?' cur':'',d=v&&S.done.has('b'+b.id)?' d':'',t='<span><span class="tm">'+b.a+'–'+b.b+'</span>'+b.t+'</span>';
-h+=v?'<label class="it'+c+d+'"><input type="checkbox" '+(d?'checked ':'')+(S.ro?'disabled ':'')+'onchange="tg(\'b'+b.id+'\')">'+t+'</label>':'<div class="it">'+t+'</div>'});
+h+='<div class="row" style="margin-top:12px"><select onchange="sd(this.value)">'+DN.map((n,i)=>'<option value="'+i+'"'+(i==vd?' selected':'')+'>'+n+(i==td?' (hoje)':'')+'</option>').join('')+'</select></div><div class="card">';
+(S.W[vd]||[]).forEach((b,i)=>{const c=v&&i==cur?' cur':'',d=v&&S.done.has('b'+b.id),t='<span><span class="tm">'+b.a+'–'+b.b+'</span>'+b.t+'</span>'+(d?'<span class="st">FEITO</span>':'');
+h+=v?'<label class="it'+c+(d?' d':'')+'"><input type="checkbox" '+(d?'checked ':'')+(S.ro?'disabled ':'')+'onchange="tg(\'b'+b.id+'\')">'+t+'</label>':'<div class="it">'+t+'</div>'});
 h+='</div>';
 }else if(tab=='check'){
-h+='<div class="mu">Checklist de '+DN[td]+'</div><div class="card">';
-xl.forEach(x=>{const d=S.done.has('c'+x.id);h+='<label class="it'+(d?' d':'')+'"><input type="checkbox" '+(d?'checked ':'')+(S.ro?'disabled ':'')+'onchange="tg(\'c'+x.id+'\')"><span>'+x.t+'</span></label>'});
+h+='<div class="lb" style="margin-top:14px">Checklist de '+DN[td]+'</div><div class="card">';
+xl.forEach(x=>{const d=S.done.has('c'+x.id);h+='<label class="it'+(d?' d':'')+'"><input type="checkbox" '+(d?'checked ':'')+(S.ro?'disabled ':'')+'onchange="tg(\'c'+x.id+'\')"><span>'+x.t+'</span>'+(d?'<span class="st">FEITO</span>':'')+'</label>'});
 h+='</div>';
+}else if(tab=='agua'){
+const g=goal(),p=g?Math.min(100,Math.round(S.ml*100/g)):0;
+h+='<div class="card"><div class="lb">Água de hoje</div>';
+if(g)h+='<div class="big">'+S.ml+' de '+g+' ml</div><div class="wb"><b style="width:'+p+'%"></b></div><div class="mu" style="margin-top:8px">'+p+'% da meta'+(S.ml>=g?' · meta batida!':'')+'</div>';
+else h+='<div class="big">'+S.ml+' ml</div><div class="mu">Informe seu peso no Perfil para calcular a meta diária.</div><div style="margin-top:10px"><button class="g" onclick="st(\'perfil\')">Abrir perfil</button></div>';
+h+='</div><div class="row"><button onclick="aw(200)">+200 ml</button><button onclick="aw(300)">+300 ml</button><button onclick="aw(500)">+500 ml</button><button class="g" onclick="aw(-200)">−200 ml</button></div>';
 }else{
-if(!S.ro)h+='<div class="card"><b>Como está o dia?</b><div class="row" style="margin-top:10px">'+MD.map((n,i)=>'<button class="g'+(i==mo?' on':'')+'" onclick="sm('+i+')">'+n+'</button>').join('')+'</div></div>';
-h+='<div class="card"><b>Atrasou? Protocolo anti-atraso</b><ul><li>Olhe o relógio: qual bloco é AGORA?</li><li>Escolha a próxima ação de 5 minutos</li><li>Não dobre tarefas para compensar atrasos</li><li>Registre a vitória possível e siga</li></ul></div>';
-h+='<div class="card"><b>Regras inegociáveis</b><ul><li>Gatos e Rock: comida ao acordar e antes de dormir</li><li>Sachê dos gatos às 19h30</li><li>Passeios do Rock de manhã e à noite</li><li>Lixo na rua até 17h30 (seg, qua, sex)</li><li>Terapia online: quarta, 20h</li><li>Reunião das atendentes: quinta, 9h</li></ul></div>';
-if(!S.ro)h+='<div class="card"><b>Avisos</b><div class="mu" style="margin:6px 0 10px">Receba uma notificação no início de cada bloco. Funciona só com o app instalado na Tela de Início.</div><button onclick="avisos()">Ativar avisos neste aparelho</button></div>';
+const g=goal();
+if(!S.ro){
+h+='<div class="card"><div class="lb">Meu perfil</div><input class="tx" id="pn" placeholder="Como quer ser chamada" value="'+esc(S.pf.name||'')+'"><div class="fl"><input class="tx" id="pw" inputmode="decimal" placeholder="Peso (kg)" value="'+(S.pf.weight_kg||'')+'"><input class="tx" id="ph" inputmode="decimal" placeholder="Altura (cm)" value="'+(S.pf.height_cm||'')+'"></div><button onclick="savePf()" style="width:100%;margin-top:6px">Salvar</button>';
+h+='<div class="mu" style="margin-top:10px">'+(g?'Meta de água: <b>'+g+' ml por dia</b>, usando 35 ml por kg. É uma referência geral. Se tiver orientação médica diferente, siga a do seu médico.':'Preencha o peso para calcular a meta de água.')+'</div></div>';
+h+='<div class="card"><div class="lb">Avisos</div><div class="mu" style="margin:6px 0 10px">Notificação no início de cada bloco. Só funciona com o app instalado na Tela de Início.</div><div class="row"><button onclick="avisos()">Ativar neste aparelho</button><button class="g'+(S.pf.water_reminders===false?'':' on')+'" onclick="twr()">Lembretes de água: '+(S.pf.water_reminders===false?'desligados':'ligados')+'</button></div><div class="mu" style="margin-top:8px">Água: 9h30, 11h, 14h30, 16h30, 18h30 e 20h30, só se a meta ainda não foi batida.</div></div>';
+}
+h+='<div class="card"><div class="lb">Guia rápido</div><b>Atrasou?</b><ul><li>Olhe o relógio: qual bloco é AGORA?</li><li>Escolha a próxima ação de 5 minutos</li><li>Não dobre tarefas para compensar atrasos</li><li>Registre a vitória possível e siga</li></ul><b>Inegociáveis</b><ul><li>Gatos e Rock: comida ao acordar e antes de dormir</li><li>Sachê dos gatos às 19h30</li><li>Passeios do Rock de manhã e à noite</li><li>Lixo na rua até 17h30 (seg, qua, sex)</li><li>Terapia online: quarta, 20h</li><li>Reunião das atendentes: quinta, 9h</li></ul></div>';
 h+='<button class="g" onclick="out()">Sair da conta</button>';
 }
 app.innerHTML=h;
-nav.innerHTML=[['agora','Agora'],['dia','Dia'],['check','Checklist'],['modos','Modos']].map(t=>'<button class="'+(tab==t[0]?'on':'')+'" onclick="st(\''+t[0]+'\')">'+t[1]+'</button>').join('');
+const T=[['agora','Agora'],['dia','Dia'],['check','Checklist']].concat(S.ro?[]:[['agua','Água']],[['perfil','Perfil']]);
+nav.innerHTML=T.map(t=>'<button class="'+(tab==t[0]?'on':'')+'" onclick="st(\''+t[0]+'\')">'+t[1]+'</button>').join('');
 }
-setInterval(async()=>{if(S.u&&(S.ro||key(new Date())!==day)){try{await lp()}catch(e){}}R()},60000);
+setInterval(async()=>{
+if(tab=='perfil'&&document.activeElement&&document.activeElement.tagName=='INPUT')return;
+if(S.u&&(S.ro||key(new Date())!==day)){try{await lp()}catch(e){}}R()},60000);
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
 init();
 </script></body></html>
